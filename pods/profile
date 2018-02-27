@@ -1,0 +1,74 @@
+
+function podinstall(){
+	sh $HOME/pg_tools/pods/ppi.sh
+}
+
+function podupdate(){
+	sh $HOME/pg_tools/pods/ppu.sh $*
+}
+
+function poddelete(){
+	echo "ppd command has been deleted"
+	#sh $HOME/pg_tools/pods/ppd.sh
+}
+
+function podcheckout(){
+ 	git checkout --theirs Podfile.lock && git add Podfile.lock
+}
+
+function podcache(){
+  sh $HOME/pg_tools/pods/podcache.sh $1
+}
+
+function podpush(){
+	sh $HOME/pg_tools/pods/podpush.sh $1
+}
+
+function podsync(){
+     sh $HOME/pg_tools/pods/podsync.sh
+}
+
+function podcreate(){
+	sh $HOME/pg_tools/pods/podcreate.sh $1 $2
+}
+
+function podpush2lib(){
+	x=\`ls Gemfile.lock\`
+if [[ "$x" = "Gemfile.lock" ]];then
+  y=`bundle check`
+  if [[ $y != "The Gemfile\'s dependencies are satisfied" ]];then
+    echo "Install Gem Start..."
+    bundle install --quiet
+    echo "Install Gem Finish..."
+  fi
+  cmd="bundle exec pod "
+else
+  cmd="pod "
+fi
+$cmd repo push PGLib --allow-warnings --use-libraries --verbose
+}
+
+function podpush2trunk(){
+	x=\`ls Gemfile.lock\`
+if [[ "$x" = "Gemfile.lock" ]];then
+  y=`bundle check`
+  if [[ $y != "The Gemfile\'s dependencies are satisfied" ]];then
+    echo "Install Gem Start..."
+    bundle install --quiet
+    echo "Install Gem Finish..."
+  fi
+  cmd="bundle exec pod "
+else
+  cmd="pod "
+fi
+$cmd  trunk push --allow-warnings --use-libraries --verbose
+}
+
+#function podlock(){
+#	ruby $HOME/pg_tools/pods/lock.rb
+#}
+
+#function podunlock(){
+#	ruby $HOME/pg_tools/pods/unlock.rb
+#}
+

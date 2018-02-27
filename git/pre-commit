@@ -1,0 +1,22 @@
+#!/bin/sh
+
+URL=$(git config --get remote.origin.url)
+
+#转换为小写
+URL=$(echo $URL | tr '[:upper:]' '[:lower:]')
+
+shouldSetup=0
+
+if [ "$URL" = "ssh://git@mobiledev.camera360.com:7999/git/ios-newcamera360.git" ];then
+    shouldSetup=1
+fi
+
+if [ "$URL" = "git@mobiledev.camera360.com:7999/git/ios-newcamera360.git" ];then
+    shouldSetup=1
+fi
+
+if [[ shouldSetup -eq 1 ]]; then
+    CLASS_FOLDER=$(find $PWD -name Classes -maxdepth 2)
+	python $HOME/pg_tools/git/check_code_style.py $CLASS_FOLDER && cd $CLASS_FOLDER/.. && python $HOME/pg_tools/git/check_big_files
+	exit $?
+fi

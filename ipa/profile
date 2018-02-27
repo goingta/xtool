@@ -1,0 +1,3 @@
+function ipa(){
+    ruby $HOME/pg_tools/ipa/ipa.rb $*
+}

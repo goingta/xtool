@@ -1,0 +1,52 @@
+#utilitys
+
+function upt(){
+    sh $HOME/pg_tools/update.sh $1
+}
+
+function x(){
+    ruby $HOME/pg_tools/utility/x
+}
+
+function xx(){
+    ruby $HOME/pg_tools/utility/x
+}
+
+function a(){
+    ruby $HOME/pg_tools/utility/a
+}
+
+function aa(){
+    ruby $HOME/pg_tools/utility/a
+}
+
+function xa(){
+	ruby $HOME/pg_tools/utility/x
+	ruby $HOME/pg_tools/utility/a
+}
+
+function lka(){
+	ruby $HOME/pg_tools/utility/linkMapAnalyzer.rb $1
+}
+
+function gemfix(){
+	sudo gem uninstall $1
+	sudo gem install -n /usr/local/bin $1
+}
+
+function xcfix(){
+	sh $HOME/pg_tools/utility/xcode_plugin_fix.sh
+}
+
+function fetchipa(){
+	echo IPA: 	iOS-$1_$2.ipa
+	echo URL:	http://dn-packages.qbox.me/iOS-$1/$2/iOS-$1_$2.ipa
+	echo
+	curl -O http://dn-packages.qbox.me/iOS-$1/$2/iOS-$1_$2.ipa
+}
+
+function gitcode(){
+	git log --pretty=tformat: --numstat $1..$2 | gawk '{ add += $1 ; subs += $2 ; loc += $1 + $2 } END { printf "added lines: %s removed lines : %s total lines: %s\n",add,subs,loc }'
+}
+
+alias ccode='find . -name "*.m" -or -name "*.mm" -or -name "*.h" |xargs grep -v "^$"|wc -l'

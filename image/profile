@@ -1,0 +1,5 @@
+#image tools
+
+function iconvert(){
+    ruby $HOME/pg_tools/image/icon-modify.rb $1 $2
+}

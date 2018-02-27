@@ -1,0 +1,25 @@
+#mobileprovision tools
+	
+function mpinstall(){
+    sh $HOME/pg_tools/mptools/mpinstall.sh $1
+}
+
+function mputil(){
+    sh $HOME/pg_tools/mptools/mputil.sh $1 $2
+}
+
+function mpclean(){
+    sh $HOME/pg_tools/mptools/mpclean.sh
+}
+
+function mplist(){
+    sh $HOME/pg_tools/mptools/mplist.sh
+}
+
+function mpcheck(){
+	sh $HOME/pg_tools/mptools/mpcheck.sh $1
+}
+
+function mpfix(){
+	sh $HOME/pg_tools/mptools/mpfix.sh
+}

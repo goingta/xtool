@@ -1,0 +1,256 @@
+# complete -o filenames -F _root_command notify
+
+alias gnb='_gnb'
+function _gnb () {
+   default_branch=''
+    if [ -z "$1" ]; then
+        echo "Usage: gnb branchName"
+        return
+    else
+        echo
+    if [[ $1 == *_* ]]; then
+        echo "Usage: defaultBranch name should not include _"
+        return
+      else
+        default_branch=$1
+      fi
+    fi
+
+   now_pwd=`pwd`
+   while [[ ! -d ".git" ]]; do
+    cd ..
+    if [[ `pwd` = '/' ]]; then
+        echo 'Here is Root, Damn! Let us go back, biu~~'
+        cd ${now_pwd}
+        return
+    fi
+    done
+
+    head=`cat .git/HEAD`
+    user=`git config --get user.name`
+    user_branch="${user}_$default_branch"
+
+    git fetch origin
+    git fetch --tags
+
+    if [ -f ".git/refs/remotes/origin/$default_branch" ]; then
+        echo "Remote has ${default_branch}"
+        # 远程有服务器分支
+        git checkout $default_branch
+        git branch --set-upstream-to=origin/$default_branch
+        git merge origin/${default_branch}
+        git push origin ${default_branch}
+    else
+        echo "Remote don't have ${default_branch}"
+        # 服务器没有这个分支
+        git checkout -b $default_branch
+        git push origin ${default_branch}
+        git branch --set-upstream-to=origin/$default_branch
+    fi
+
+
+    if [ -f ".git/refs/remotes/origin/$user_branch" ]; then
+        echo "Remote has ${user_branch}"
+        # 远程有服务器分支
+        git checkout $user_branch
+        git branch --set-upstream-to=origin/$user_branch
+        git merge origin/${user_branch}
+        git push origin ${user_branch}
+    else
+        echo "Remote don't have ${user_branch}"
+        # 服务器没有这个分支
+        git checkout -b $user_branch
+        git push origin ${user_branch}
+        git branch --set-upstream-to=origin/$user_branch
+    fi
+    gl
+}
+
+alias gl='_gl'
+function _gl() {
+    now_pwd=`pwd`
+    while [[ ! -d ".git" ]];do
+        cd ..
+        if [[ `pwd` == '/' ]]; then
+            echo 'Here is Root, Damn! Let us go back, biu~~'
+            cd ${now_pwd}
+            return
+        fi
+    done;
+
+    head=`cat .git/HEAD`
+    current_head=${head##*/}
+    user=${current_head%%_*}
+    if [[ $current_head == *_* ]]
+        then
+        branch=${current_head%%+*}
+        branch=${branch##*_}
+        user_branch="${user}_${branch}"
+
+        git fetch origin
+        git merge $user_branch origin/$user_branch
+        git merge $user_branch origin/$branch
+
+        if [[ $current_head == *+* ]]; then
+            git merge $current_head origin/${user_branch}
+            git merge $current_head origin/$current_head
+            git merge $current_head $user_branch
+        fi
+    else
+        echo "you are not in your own branch"
+    fi
+}
+
+alias gl2='_gl2'
+function _gl2() {
+    now_pwd=`pwd`
+    while [[ ! -d ".git" ]];do
+        cd ..
+        if [[ `pwd` == '/' ]]; then
+            echo 'Here is Root, Damn! Let us go back, biu~~'
+            cd ${now_pwd}
+            return
+        fi
+    done;
+
+    head=`cat .git/HEAD`
+    current_head=${head##*/}
+    user=${current_head%%_*}
+    if [[ $current_head == *_* ]]
+        then
+        branch=${current_head%%+*}
+        branch=${branch##*_}
+        user_branch="${user}_${branch}"
+
+        masterBranch=${branch%%-*}
+
+        git fetch origin
+        git merge $user_branch origin/$user_branch
+        git merge $user_branch origin/$branch
+        git merge $user_branch origin/$masterBranch
+
+    else
+        echo "you are not in your own branch"
+    fi
+}
+
+alias gh='_gh'
+function _gh() {
+    now_pwd=`pwd`
+    while [[ ! -d ".git" ]];do
+        cd ..
+        if [[ `pwd` == '/' ]]; then
+            echo 'Here is Root, Damn! Let us go back, biu~~'
+            cd ${now_pwd}
+            return
+        fi
+    done;
+
+    head=`cat .git/HEAD`
+    current_head=${head##*/}
+    user=${current_head%%_*}
+    if [[ $current_head == *_* ]]; then
+        branch=${current_head%%+*}
+        branch=${branch##*_}
+        user_branch="${user}_${branch}"
+
+
+        git fetch origin
+
+        git merge $user_branch origin/$user_branch
+        git merge $user_branch origin/$branch
+
+
+        if [[ $current_head == *+* ]]; then
+            git push origin $user_branch
+            git fetch origin
+
+            git checkout $current_head
+            git merge origin/${user_branch}
+            git merge $current_head origin/$current_head
+            git push origin $current_head
+        else
+            git push origin $user_branch
+        fi
+    else
+      echo "you are not in your own branch"
+  fi
+}
+
+alias gr='_gr'
+function _gr() {
+    now_pwd=`pwd`
+    while [[ ! -d ".git" ]];do
+        cd ..
+        if [[ `pwd` == '/' ]]; then
+            echo 'Here is Root, Damn! Let us go back, biu~~'
+            cd ${now_pwd}
+            return
+        fi
+    done;
+    head=`cat .git/HEAD`
+    current_head=${head##*/}
+    origin=`git ls-remote --get-url origin`
+    user=${current_head%%_*}
+
+
+    if [[ $current_head == *_* ]]
+        then
+        branch=${current_head%%+*}
+        branch=${branch##*_}
+
+
+        if [[ $current_head == *+* ]]; then
+            user_branch="$current_head"
+        else
+            user_branch="${user}_${branch}"
+        fi
+        msg="${user_branch} pull-request"
+        desc=`git log origin/$branch..$user_branch --pretty=oneline --abbrev-commit --no-merges`
+
+        result=$(echo $origin | grep "gitlab")
+        if [[ "$result" != "" ]]
+            then
+            projectId=`git config --get gitlab.projectId`
+            projectName=`git config --get gitlab.projectName`
+            groupName=`git config --get gitlab.groupName`
+            assignee=`git config --get gitlab.assignee`
+            url=`git config --get gitlab.url`
+            token=`git config --get gitlab.token`
+
+            if [[ $url != `gitlab url` ]]
+            then
+                echo 'Setup gitlab url $url'
+                gitlab url $url
+            fi
+
+            if [[ $token != `gitlab token` ]]
+            then
+                echo 'Setup gitlab token $token'
+                gitlab token $token
+            fi
+
+
+            if [[ `git diff $user_branch  origin/$branch | grep diff`  != "" ]]; then
+                mergeRequestJson=`gitlab addMergeRequest $projectId $user_branch $branch $assignee $msg`
+                if [ "$mergeRequestJson" = true ] ; then
+                    echo "远端已经有一个PR，还没有合。"
+                else
+                    openUrl=`echo $mergeRequestJson | grep web_url | tail -1 | cut -c 15-`
+                    urlLength=${#openUrl}
+                    urlLength=$[urlLength-2]
+                    openUrl=`echo $openUrl | cut -c 1-$urlLength`
+                    echo "PR发送成功，请等待合并。"
+                    open $openUrl
+                fi
+            else
+                echo "Your branch $user_branch is sync with $branch"
+            fi
+        else
+            stash pull-request -o --title "${msg}" --description "${desc}" $user_branch $branch
+        fi
+    else
+        echo "you are not in your own branch"
+    fi
+
+}
