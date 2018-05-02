@@ -1,3 +1,3 @@
 #! /usr/bin/sh
 
-ruby $HOME/pg_tools/pods/SyncPods.rb `pwd`
+ruby $HOME/xtool/pods/SyncPods.rb `pwd`

@@ -1,3 +1,3 @@
 #安装命令补全
-source $HOME/pg_tools/completion/profile
+source $HOME/xtool/completion/profile
 comp_install utility _mylka

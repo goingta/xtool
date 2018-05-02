@@ -181,8 +181,8 @@ def make(debug="Release",clearTemp=true,autoOpenFinder=false)
 
 		ipaFile = "#{output}#{name}.ipa"
 
-		cername = `ruby $HOME/pg_tools/ipa/ipa.rb -info #{ipaFile} cername`.chop
-		certype = `ruby $HOME/pg_tools/ipa/ipa.rb -info #{ipaFile} certype`.chop
+		cername = `ruby $HOME/xtool/ipa/ipa.rb -info #{ipaFile} cername`.chop
+		certype = `ruby $HOME/xtool/ipa/ipa.rb -info #{ipaFile} certype`.chop
 		newIpaFile = "#{output}#{name}_#{cername}_#{certype}.ipa"
 
 		if cername.include?"Error"

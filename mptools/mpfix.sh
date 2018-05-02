@@ -1,5 +1,5 @@
 
-MPTOOLS_PATH="$HOME/pg_tools/mptools/"
+MPTOOLS_PATH="$HOME/xtool/mptools/"
 TARGET_PATH="$HOME"/'Library/MobileDevice/Provisioning Profiles'
 
 #修复证书名称是一串数字和字母额情况。

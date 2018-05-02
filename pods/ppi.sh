@@ -80,7 +80,7 @@ if [ -f "./Podfile" ]; then
 
         cd $currentFolder
 
-        ruby $HOME/pg_tools/pods/ChangePodFile.rb `ls -lrt -d -1 $PWD/Podfile`
+        ruby $HOME/xtool/pods/ChangePodFile.rb `ls -lrt -d -1 $PWD/Podfile`
 
         x=`ls Gemfile.lock`
         if [[ "$x" = "Gemfile.lock" ]];then

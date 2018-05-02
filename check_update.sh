@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-TOOLS_FOLDER="$HOME/pg_tools"
+TOOLS_FOLDER="$HOME/xtool"
 
 zmodload zsh/datetime
 
@@ -58,11 +58,11 @@ then
     log=$(cat $TOOLS_FOLDER/.tools-changes)
 
     if [[ -n "$log" ]]; then
-      echo "[pg_tools] has one or more updates:"
+      echo "[xtool] has one or more updates:"
       echo "----------------------------"
       sh "$TOOLS_FOLDER/utility/echoColor.sh" "-yellow" "$log"
       echo "----------------------------"
-      echo "Would you like to update for pg_tools?"
+      echo "Would you like to update for xtool?"
       str="\033[32mY\033[0m"
       echo "Type $str to update: \c"
       read line

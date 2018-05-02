@@ -1,5 +1,5 @@
 #!/bin/sh
-source $HOME/pg_tools/profile
+source $HOME/xtool/profile
 
 # NewCamera360
 cd $HOME/.jenkins/jobs/iOS-NewCamera360-Daily/workspace

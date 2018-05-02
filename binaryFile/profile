@@ -1,5 +1,5 @@
 #bitcode tools
 	
 function checkBitcode(){
-    ruby $HOME/pg_tools/binaryFile/bitcode.rb $1
+    ruby $HOME/xtool/binaryFile/bitcode.rb $1
 }

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TOOL_FOLDER="$HOME/pg_tools/shell"
+TOOL_FOLDER="$HOME/xtool/shell"
 USER_FOLDER="$HOME"
 
 #判断shell环境

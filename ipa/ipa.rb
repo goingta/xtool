@@ -40,12 +40,12 @@ def deleteTempInfoFile
 end
 
 def listSignValue(key="")
-	mputilShell = "$HOME/pg_tools/mptools/mputil.sh"
+	mputilShell = "$HOME/xtool/mptools/mputil.sh"
 	system "sh #{mputilShell} ./.temp.mobileprovision #{key}"
 end
 
 def listSignCerType
-	mputilShell = "$HOME/pg_tools/mptools/mputil.sh"
+	mputilShell = "$HOME/xtool/mptools/mputil.sh"
 	ret=`sh #{mputilShell} ./.temp.mobileprovision DeveloperCertificates`
 	if ret.include?("iPhone Developer")
 		ret = "Developer"

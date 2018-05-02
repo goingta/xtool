@@ -1,62 +1,62 @@
 
-source $HOME/pg_tools/binaryFile/profile
+source $HOME/xtool/binaryFile/profile
 	
 
-source $HOME/pg_tools/completion/profile
+source $HOME/xtool/completion/profile
 	
 
-source $HOME/pg_tools/dependency/profile
+source $HOME/xtool/dependency/profile
 
-source $HOME/pg_tools/git/profile
+source $HOME/xtool/git/profile
 	
 
-source $HOME/pg_tools/image/profile
+source $HOME/xtool/image/profile
 	
 
-source $HOME/pg_tools/ipa/profile
+source $HOME/xtool/ipa/profile
 	
 
-source $HOME/pg_tools/localizable/profile
+source $HOME/xtool/localizable/profile
 	
 
-source $HOME/pg_tools/mptools/profile
+source $HOME/xtool/mptools/profile
 	
 
-source $HOME/pg_tools/package/profile
+source $HOME/xtool/package/profile
 	
 
-source $HOME/pg_tools/pods/profile
+source $HOME/xtool/pods/profile
 	
 
-source $HOME/pg_tools/utility/profile
+source $HOME/xtool/utility/profile
 	
 
-source $HOME/pg_tools/./binaryFile/profile
+source $HOME/xtool/./binaryFile/profile
 	
 
-source $HOME/pg_tools/./completion/profile
+source $HOME/xtool/./completion/profile
 	
 
-source $HOME/pg_tools/./dependency/profile
+source $HOME/xtool/./dependency/profile
 	
 
-source $HOME/pg_tools/./image/profile
+source $HOME/xtool/./image/profile
 	
 
-source $HOME/pg_tools/./ipa/profile
+source $HOME/xtool/./ipa/profile
 	
 
-source $HOME/pg_tools/./localizable/profile
+source $HOME/xtool/./localizable/profile
 	
 
-source $HOME/pg_tools/./mptools/profile
+source $HOME/xtool/./mptools/profile
 	
 
-source $HOME/pg_tools/./package/profile
+source $HOME/xtool/./package/profile
 	
 
-source $HOME/pg_tools/./pods/profile
+source $HOME/xtool/./pods/profile
 	
 
-source $HOME/pg_tools/./utility/profile
+source $HOME/xtool/./utility/profile
 	

@@ -3,7 +3,7 @@
 #判断shell环境
 if [[ "$SHELL" == "/bin/zsh" ]]; then
 	#添加命令补全
-	COMP_FILE="$HOME/pg_tools/$1/$2"
+	COMP_FILE="$HOME/xtool/$1/$2"
 	ZSH_VERSION=$(zsh --version | cut -d " " -f2)
 	TARGET_FILE="/usr/local/share/zsh/site-functions/$2"
 

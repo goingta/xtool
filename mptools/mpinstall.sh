@@ -1,5 +1,5 @@
 #!/bin/bash
-MPTOOLS_PATH="$HOME/pg_tools/mptools/"
+MPTOOLS_PATH="$HOME/xtool/mptools/"
 TARGET_PATH="$HOME"/'Library/MobileDevice/Provisioning Profiles/'
 
 function _install(){

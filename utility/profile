@@ -1,32 +1,32 @@
 #utilitys
 
 function upt(){
-    sh $HOME/pg_tools/update.sh $1
+    sh $HOME/xtool/update.sh $1
 }
 
 function x(){
-    ruby $HOME/pg_tools/utility/x
+    ruby $HOME/xtool/utility/x
 }
 
 function xx(){
-    ruby $HOME/pg_tools/utility/x
+    ruby $HOME/xtool/utility/x
 }
 
 function a(){
-    ruby $HOME/pg_tools/utility/a
+    ruby $HOME/xtool/utility/a
 }
 
 function aa(){
-    ruby $HOME/pg_tools/utility/a
+    ruby $HOME/xtool/utility/a
 }
 
 function xa(){
-	ruby $HOME/pg_tools/utility/x
-	ruby $HOME/pg_tools/utility/a
+	ruby $HOME/xtool/utility/x
+	ruby $HOME/xtool/utility/a
 }
 
 function lka(){
-	ruby $HOME/pg_tools/utility/linkMapAnalyzer.rb $1
+	ruby $HOME/xtool/utility/linkMapAnalyzer.rb $1
 }
 
 function gemfix(){
@@ -35,7 +35,7 @@ function gemfix(){
 }
 
 function xcfix(){
-	sh $HOME/pg_tools/utility/xcode_plugin_fix.sh
+	sh $HOME/xtool/utility/xcode_plugin_fix.sh
 }
 
 function fetchipa(){

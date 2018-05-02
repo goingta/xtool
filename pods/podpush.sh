@@ -6,7 +6,7 @@ function podpush_old() {
 
 	if [ -n "`ls *.podspec`" ]; then
 		git pull origin
-		ruby $HOME/pg_tools/pods/BumpPodSpecVersion.rb `ls -lrt -d -1 $PWD/*.podspec` $1
+		ruby $HOME/xtool/pods/BumpPodSpecVersion.rb `ls -lrt -d -1 $PWD/*.podspec` $1
 	else
 		echo No "podspec" found in the project directory.
 	fi
