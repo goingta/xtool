@@ -182,77 +182,112 @@ function _gh() {
 alias gmr='_gmr'
 function _gmr() {
     now_pwd=`pwd`
-    while [[ ! -d ".git" ]];do
+    while [[ ! -d ".git" ]]
+    do
         cd ..
-        if [[ `pwd` == '/' ]]; then
+        if [[ `pwd` = '/' ]]
+        then
             echo 'Here is Root, Damn! Let us go back, biu~~'
             cd ${now_pwd}
             return
         fi
-    done;
-    head=`cat .git/HEAD`
-    current_head=${head##*/}
-    origin=`git ls-remote --get-url origin`
-    user=${current_head%%_*}
+    done
 
-
-    if [[ $current_head == *_* ]]
-        then
-        branch=${current_head%%+*}
-        branch=${branch##*_}
-
-
-        if [[ $current_head == *+* ]]; then
-            user_branch="$current_head"
-        else
-            user_branch="${user}_${branch}"
-        fi
-        msg="${user_branch} pull-request"
-        desc=`git log origin/$branch..$user_branch --pretty=oneline --abbrev-commit --no-merges`
-
-        result=$(echo $origin | grep "gitlab")
-        if [[ "$result" != "" ]]
-            then
-            projectId=`git config --get gitlab.projectId`
-            projectName=`git config --get gitlab.projectName`
-            groupName=`git config --get gitlab.groupName`
-            assignee=`git config --get gitlab.assignee`
-            url=`git config --get gitlab.url`
-            token=`git config --get gitlab.token`
-
-            if [[ $url != `gitlab url` ]]
-            then
-                echo 'Setup gitlab url $url'
-                gitlab url $url
-            fi
-
-            if [[ $token != `gitlab token` ]]
-            then
-                echo 'Setup gitlab token $token'
-                gitlab token $token
-            fi
-
-
-            if [[ `git diff $user_branch  origin/$branch | grep diff`  != "" ]]; then
-                mergeRequestJson=`gitlab addMergeRequest $projectId $user_branch $branch $assignee $msg`
-                if [ "$mergeRequestJson" = true ] ; then
-                    echo "远端已经有一个PR，还没有合。"
-                else
-                    openUrl=`echo $mergeRequestJson | grep web_url | tail -1 | cut -c 15-`
-                    urlLength=${#openUrl}
-                    urlLength=$[urlLength-2]
-                    openUrl=`echo $openUrl | cut -c 1-$urlLength`
-                    echo "PR发送成功，请等待合并。"
-                    open $openUrl
-                fi
-            else
-                echo "Your branch $user_branch is sync with $branch"
-            fi
-        else
-            stash pull-request -o --title "${msg}" --description "${desc}" $user_branch $branch
-        fi
+    # setup_git_pre_commit_hooks
+    src_branch=""
+    dst_branch=""
+    if [ -n "$1" ]; then
+       head=`cat .git/HEAD`
+       current_head=`echo $head | cut -b 17-`
+       git fetch origin
+       git push origin $current_head
+       src_branch=${current_head}
+       dst_branch=$1
     else
-        echo "you are not in your own branch"
+        head=`cat .git/HEAD`
+        current_head=`echo $head | cut -b 17-`
+        user=${current_head%%_*}
+        if [[ $current_head = *_* ]]
+        then
+            branch=${current_head%%+*}
+            branch=${branch##*_}
+            user_branch="${user}_${branch}"
+            git fetch origin
+            git merge $user_branch origin/$user_branch
+            git merge $user_branch origin/$branch
+            if [[ $current_head = *+* ]]
+            then
+                git push origin $user_branch
+                git fetch origin
+                git checkout $current_head
+                git merge origin/${user_branch}
+                git merge $current_head origin/$current_head
+                git push origin $current_head
+            else
+                git push origin $user_branch
+            fi
+            src_branch=${user_branch}
+            dst_branch=${branch}
+        else
+            echo "you are not in your own branch"
+            return
+        fi
     fi
 
+    origin_url=`git config remote.origin.url`
+    git_ip=""
+    git_path=""
+    url=""
+
+    git_ip=`git config remote.origin.url | awk -F':' '{print $1}'| awk -F'@' '{print $2}'`
+    git_path=`git config remote.origin.url | awk -F':' '{print $2}' | awk -F'.' '{print $1}'`
+    url='https://'$git_ip'/'$git_path'/-/merge_requests/new?utf8=✓&merge_request[source_branch]='$src_branch'&merge_request[target_branch]='$dst_branch
+
+    if [[ -x "$(command -v xdg-open)" ]]
+    then
+        echo "xdg-open"
+        xdg-open $url
+        return 0
+    fi
+
+    if [[ -x "$(command -v open)" ]]
+    then
+        echo "open"
+        open $url
+        return 0
+    fi
+
+    if [[ -x "$(command -v start)" ]]
+    then
+        echo "start"
+        start $url
+        return 0
+    fi
+
+}
+
+# private function
+function rev2() {
+    declare input=${*:-$(</dev/stdin)}
+    reverse=""
+
+    len=${#input}
+    for (( i=$len-1; i>=0; i-- ))
+    do
+        reverse="$reverse${input:$i:1}"
+    done
+    echo ${reverse}
+    # return $reverse
+}
+
+function setup_git_pre_commit_hooks() {
+    mkdir -p .git/hooks
+    if [[ ! -f .git/hooks/pre-commit && -f scripts/pre-commit/pre-commit.sh ]]; then
+        echo "Copy Pre-Commit to hooks"
+    fi
+
+    if [[ -f scripts/pre-commit/pre-commit.sh ]]; then
+        cp -f scripts/pre-commit/pre-commit.sh .git/hooks/pre-commit
+        chmod +x .git/hooks/pre-commit
+    fi
 }
