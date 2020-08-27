@@ -101,8 +101,8 @@ function _gl() {
     fi
 }
 
-alias gl2='_gl2'
-function _gl2() {
+alias glm='_glm'
+function _glm() {
     now_pwd=`pwd`
     while [[ ! -d ".git" ]];do
         cd ..
@@ -179,8 +179,8 @@ function _gh() {
   fi
 }
 
-alias gr2='_gr'
-function _gr() {
+alias gmr='_gmr'
+function _gmr() {
     now_pwd=`pwd`
     while [[ ! -d ".git" ]];do
         cd ..
