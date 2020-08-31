@@ -7,13 +7,7 @@ function _gnb () {
         echo "Usage: gnb branchName"
         return
     else
-        echo
-    if [[ $1 == *_* ]]; then
-        echo "Usage: defaultBranch name should not include _"
-        return
-      else
         default_branch=$1
-      fi
     fi
 
    now_pwd=`pwd`
