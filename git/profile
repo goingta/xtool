@@ -113,7 +113,7 @@ function _glm() {
     if [[ $current_head == *_* ]]
         then
         branch=${current_head%%+*}
-        branch=${branch##*_}
+        branch=${branch#*_}
         user_branch="${user}_${branch}"
 
         git fetch origin
