@@ -78,7 +78,7 @@ function _gl() {
     if [[ $current_head == *_* ]]
         then
         branch=${current_head%%+*}
-        branch=${branch##*_}
+        branch=${branch#*_}
         user_branch="${user}_${branch}"
 
         git fetch origin
@@ -147,7 +147,7 @@ function _gh() {
     user=${current_head%%_*}
     if [[ $current_head == *_* ]]; then
         branch=${current_head%%+*}
-        branch=${branch##*_}
+        branch=${branch#*_}
         user_branch="${user}_${branch}"
 
 
@@ -204,7 +204,7 @@ function _gmr() {
         if [[ $current_head = *_* ]]
         then
             branch=${current_head%%+*}
-            branch=${branch##*_}
+            branch=${branch#*_}
             user_branch="${user}_${branch}"
             git fetch origin
             git merge $user_branch origin/$user_branch
