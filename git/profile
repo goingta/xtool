@@ -74,12 +74,12 @@ function _gl() {
 
     head=`cat .git/HEAD`
     current_head=${head##*/}
-    user=${current_head%%_*}
+    user=`git config --get user.name`
     if [[ $current_head == *_* ]]
         then
-        branch=${current_head%%+*}
-        branch=${branch##*_}
-        user_branch="${default_branch}_${user}"
+        branch=${current_head%_*}
+        # branch=${branch##*_}
+        user_branch="${branch}_${user}"
 
         git fetch origin
         git merge $user_branch origin/$user_branch
@@ -109,12 +109,14 @@ function _glm() {
 
     head=`cat .git/HEAD`
     current_head=${head##*/}
-    user=${current_head%%_*}
+    user=`git config --get user.name`
     if [[ $current_head == *_* ]]
         then
-        branch=${current_head%%+*}
-        branch=${branch##*_}
-        user_branch="${default_branch}_${user}"
+        branch=${current_head%_*}
+        # branch=${branch##*_}
+        user_branch="${branch}_${user}"
+
+
 
         git fetch origin
         git merge $user_branch origin/$user_branch
@@ -144,11 +146,11 @@ function _gh() {
 
     head=`cat .git/HEAD`
     current_head=${head##*/}
-    user=${current_head%%_*}
+    user=`git config --get user.name`
     if [[ $current_head == *_* ]]; then
-        branch=${current_head%%+*}
-        branch=${branch##*_}
-        user_branch="${default_branch}_${user}"
+        branch=${current_head%_*}
+        # branch=${branch##*_}
+        user_branch="${branch}_${user}"
 
 
         git fetch origin
@@ -200,12 +202,12 @@ function _gmr() {
     else
         head=`cat .git/HEAD`
         current_head=`echo $head | cut -b 17-`
-        user=${current_head%%_*}
+        user=`git config --get user.name`
         if [[ $current_head = *_* ]]
         then
-            branch=${current_head%%+*}
-            branch=${branch##*_}
-            user_branch="${default_branch}_${user}"
+            branch=${current_head%_*}
+            # branch=${branch##*_}
+            user_branch="${branch}_${user}"
             git fetch origin
             git merge $user_branch origin/$user_branch
             git merge $user_branch origin/$branch
