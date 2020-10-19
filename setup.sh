@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ROOT_PROFILE="$HOME/.profile"
-PG_PROFILE="$HOME/xtool/profile"
+X_PROFILE="$HOME/xtool/profile"
 
 function includeString(){
 	echo "$1" | grep -q "$2" && return 0 || return 1
@@ -26,19 +26,20 @@ $1
 }
 
 function setupTool(){
-	addStringToFile 'source $HOME/xtool/'$1"/profile" $PG_PROFILE
+	addStringToFile 'source $HOME/xtool/'$1"/profile" $X_PROFILE
 	sh "$HOME/xtool/$1/setup.sh"
 	successString="$1 setup success !"
 	sh "./utility/echoColor.sh" "-green" "$successString"
 }
 
 #在.profile里面添加source代码
-addStringToFile "source $PG_PROFILE" $ROOT_PROFILE
+addStringToFile "source $X_PROFILE" $ROOT_PROFILE
 
 #在.zshrc/.bashrc里面添加source代码
 addStringToFile "source $ROOT_PROFILE" $RC_FILE
 
-addStringToFile "env ZSH=$ZSH "'PGTOOLS_AUTO_CHECK=$PGTOOLS_AUTO_CHECK PGTOOLS_AUTO_DAYS=$PGTOOLS_AUTO_DAYS'" zsh -f $HOME/xtool/check_update.sh" $RC_FILE
+addStringToFile "env ZSH=$ZSH "'PGTOOLS_AUTO_CHECK=$PGTOOLS_AUTO_CHECK PGTOOLS_AUTO_DAYS=$PGTOOLS_AUTO_DAYS'" zsh -f $HOME/xtool/check_update.sh" 
+$RC_FILE
 
 if [[ "$1" != "" ]]; then
 	if [[ -d "$1" ]]; then
