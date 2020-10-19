@@ -3,6 +3,7 @@
 ROOT_PROFILE="$HOME/.profile"
 X_PROFILE="$HOME/xtool/profile"
 
+
 function includeString(){
 	echo "$1" | grep -q "$2" && return 0 || return 1
 }
@@ -12,6 +13,23 @@ if includeString "$SHELL" "/bin/zsh"; then
 	RC_FILE="$HOME/.zshrc"
 elif includeString "$SHELL" "/bin/bash"; then
 	RC_FILE="$HOME/.bashrc"
+	#安装oh-my-zsh
+	sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
+
+#安装 zsh-autosuggestions 插件
+FOLDER="${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
+if [ ! -x "$folder"]; then
+	echo "安装 zsh-autosuggestions"
+  	sh "git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
+fi
+
+
+#安装 zsh-syntax-highlighting 插件
+FOLDER="${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
+if [ ! -x "$folder"]; then
+  echo "安装 zsh-syntax-highlighting"
+  sh "git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"	
 fi
 
 function addStringToFile(){
@@ -38,8 +56,8 @@ addStringToFile "source $X_PROFILE" $ROOT_PROFILE
 #在.zshrc/.bashrc里面添加source代码
 addStringToFile "source $ROOT_PROFILE" $RC_FILE
 
-addStringToFile "env ZSH=$ZSH "'PGTOOLS_AUTO_CHECK=$PGTOOLS_AUTO_CHECK PGTOOLS_AUTO_DAYS=$PGTOOLS_AUTO_DAYS'" zsh -f $HOME/xtool/check_update.sh" 
-$RC_FILE
+#addStringToFile "env ZSH=$ZSH "'PGTOOLS_AUTO_CHECK=$PGTOOLS_AUTO_CHECK PGTOOLS_AUTO_DAYS=$PGTOOLS_AUTO_DAYS'" zsh -f $HOME/xtool/check_update.sh" 
+#$RC_FILE
 
 if [[ "$1" != "" ]]; then
 	if [[ -d "$1" ]]; then

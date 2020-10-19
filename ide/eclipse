@@ -2,4 +2,4 @@
 require 'shellwords'
 
 puts "Opening -a eclipse ."
-	`open -a eclipse .`
+`open -a eclipse`

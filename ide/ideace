@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
 require 'shellwords'
 puts "Opening -a IntelliJ IDEA CE"
-	`open -a IntelliJ\ IDEA\ CE`
+`open -a IntelliJ\\ IDEA\\ CE`
