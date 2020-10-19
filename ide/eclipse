@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+require 'shellwords'
+
+puts "Opening -a eclipse ."
+	`open -a eclipse .`

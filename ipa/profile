@@ -1,3 +1,0 @@
-function ipa(){
-    ruby $HOME/xtool/ipa/ipa.rb $*
-}

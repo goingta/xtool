@@ -1,0 +1,32 @@
+
+#前端
+
+#xcode
+function x(){
+    ruby $HOME/xtool/ide/x
+}
+
+#Android Studio
+function a(){
+    ruby $HOME/xtool/ide/android
+}
+
+
+
+#服务端
+
+#idea
+function ida(){
+    ruby $HOME/xtool/ide/idea
+}
+
+#idea ce
+function idace(){
+    ruby $HOME/xtool/ide/ideace
+}
+
+#eclipse
+function e(){
+    ruby $HOME/xtool/ide/eclipse
+}
+

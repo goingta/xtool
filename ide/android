@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+require 'shellwords'
+puts 'Open Android Studio'
+		`open -a Android\ Studio` 
