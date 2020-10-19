@@ -60,7 +60,7 @@ then
     if [[ -n "$log" ]]; then
       echo "[xtool] has one or more updates:"
       echo "----------------------------"
-      sh "$TOOLS_FOLDER/utility/echoColor.sh" "-yellow" "$log"
+      sh "$TOOLS_FOLDER/shell/echoColor.sh" "-yellow" "$log"
       echo "----------------------------"
       echo "Would you like to update for xtool?"
       str="\033[32mY\033[0m"

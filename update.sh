@@ -8,5 +8,5 @@ if [ -d $TOOLS_FOLDER ]; then
 	cd $old
 else
 	str="xtool not installed at $HOME/"
-	sh "./utility/echoColor.sh" "-red" "$str"
+	sh "./shell/echoColor.sh" "-red" "$str"
 fi

@@ -29,7 +29,7 @@ function setupTool(){
 	addStringToFile 'source $HOME/xtool/'$1"/profile" $X_PROFILE
 	sh "$HOME/xtool/$1/setup.sh"
 	successString="$1 setup success !"
-	sh "./utility/echoColor.sh" "-green" "$successString"
+	sh "./shell/echoColor.sh" "-green" "$successString"
 }
 
 #在.profile里面添加source代码
@@ -43,12 +43,12 @@ $RC_FILE
 
 if [[ "$1" != "" ]]; then
 	if [[ -d "$1" ]]; then
-		sh "./utility/echoColor.sh" "-yellow" "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
+		sh "./shell/echoColor.sh" "-yellow" "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
 		setupTool $1
-		sh "./utility/echoColor.sh" "-yellow" ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+		sh "./shell/echoColor.sh" "-yellow" ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
 	else
 		failedString="$1 not exsit!"
-		sh "./utility/echoColor.sh" "-red" "$failedString"
+		sh "./shell/echoColor.sh" "-red" "$failedString"
 	fi
 else
 	for file in ./*
@@ -57,9 +57,9 @@ else
 	    then
 		    if [ "$file" != "./shell" ] && [ "$file" != "./git" ]; then
 	    		echo $file | cut -d "/" -f2
-	    		sh "./utility/echoColor.sh" "-yellow" "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
+	    		sh "./shell/echoColor.sh" "-yellow" "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
 				setupTool $file
-				sh "./utility/echoColor.sh" "-yellow" ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+				sh "./shell/echoColor.sh" "-yellow" ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
 				echo 
 			fi
 	    fi

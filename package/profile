@@ -1,7 +1,0 @@
-#package tools
-
-function pkg(){
-    ruby $HOME/xtool/package/package.rb $1 $2 $3
-}
-
-

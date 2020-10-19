@@ -13,5 +13,5 @@ if [[ "$SHELL" == "/bin/zsh" ]]; then
 
 	 str="$1 completion installed success!"
 
-	 sh "../utility/echoColor.sh" "-green" "$str"
+	 sh "../shell/echoColor.sh" "-green" "$str"
 fi

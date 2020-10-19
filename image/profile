@@ -1,5 +1,0 @@
-#image tools
-
-function iconvert(){
-    ruby $HOME/xtool/image/icon-modify.rb $1 $2
-}
