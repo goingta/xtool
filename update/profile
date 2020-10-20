@@ -1,0 +1,7 @@
+function _update(){
+    CURRENT_FOLDER=$PWD
+	cd $HOME/xtool
+	git pull
+	sh setup.sh
+	cd $CURRENT_FOLDER
+}

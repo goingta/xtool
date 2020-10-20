@@ -1,5 +1,4 @@
 #!/bin/bash
-#! /bin/bash
 
 source $HOME/xtool/ide/profile
 

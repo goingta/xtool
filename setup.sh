@@ -93,3 +93,8 @@ fi
 sed -i "" "s/plugins=.*$/plugins=( git z sublime zsh-autosuggestions $HAS_VSCODE zsh_reload colored-man-pages zsh-syntax-highlighting sudo )/" $HOME/.zshrc
 
 sh "./shell/echoColor.sh" "-red" "安装完毕，请重启终端。否则命令不会立即生效!"
+
+
+
+
+
