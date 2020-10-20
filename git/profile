@@ -287,3 +287,7 @@ function setup_git_pre_commit_hooks() {
         chmod +x .git/hooks/pre-commit
     fi
 }
+
+# 其他自定义扩展
+
+alias gam='git add . && git commit -m'

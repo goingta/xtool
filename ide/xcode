@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 require 'shellwords'
+puts "hello"
 proj = Dir['*.xcworkspace'].first
 proj = Dir['*.xcodeproj'].first unless proj
 if proj

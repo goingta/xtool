@@ -18,18 +18,18 @@ elif includeString "$SHELL" "/bin/bash"; then
 fi
 
 #安装 zsh-autosuggestions 插件
-FOLDER="${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
-if [ ! -x "$folder"]; then
+FOLDER="$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions/"
+if [ ! -d "$FOLDER" ]; then
 	echo "安装 zsh-autosuggestions"
-  	sh "git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
+  	git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 fi
 
 
 #安装 zsh-syntax-highlighting 插件
-FOLDER="${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
-if [ ! -x "$folder"]; then
+FOLDER="$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/"
+if [ ! -d "$FOLDER" ]; then
   echo "安装 zsh-syntax-highlighting"
-  sh "git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"	
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 fi
 
 function addStringToFile(){
@@ -37,7 +37,7 @@ function addStringToFile(){
 	if [ "$ret" = "" ] ;then
 		echo "
 $1
-	">>$2
+	">>$
 
 	echo "[source] \"$1\" ---> \"$2\"."
 	fi

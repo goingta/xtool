@@ -3,33 +3,30 @@
 
 #xcode
 function x(){
-    ruby $HOME/xtool/ide/x
+    ruby $HOME/xtool/ide/xcode
 }
 
 #Android Studio
-alias as='as'
 function as(){
     ruby $HOME/xtool/ide/android
 }
 
 
-
 #服务端
 
 #idea
-alias ida='ida'
 function ida(){
     ruby $HOME/xtool/ide/idea
 }
 
 #idea ce
-alias idace='idace'
+
 function idace(){
     ruby $HOME/xtool/ide/ideace
 }
 
 #eclipse
-alias ec='ec'
+
 function ec(){
     ruby $HOME/xtool/ide/eclipse
 }
