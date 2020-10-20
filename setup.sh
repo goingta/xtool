@@ -84,4 +84,12 @@ else
 	done
 fi
 
+# 开启所有安装的插件
+HAS_VSCODE=''
+FOLDER="$HOME/.oh-my-zsh/custom/plugins/vscode"
+if [ -d "$FOLDER" ]; then
+	HAS_VSCODE='vscode'
+fi
+sed -i "" "s/plugins=.*$/plugins=( git z sublime zsh-autosuggestions $HAS_VSCODE zsh_reload colored-man-pages zsh-syntax-highlighting sudo )/" $HOME/.zshrc
 
+sh "./shell/echoColor.sh" "-red" "安装完毕，请重启终端。否则命令不会立即生效!"
