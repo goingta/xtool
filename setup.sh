@@ -73,7 +73,7 @@ else
 	do
 	    if test -d $file
 	    then
-		    if [ "$file" != "./shell" ] && [ "$file" != "./git" ]; then
+		    if [ "$file" != "./shell" ] && [ "$file" != "./git" ] && [ -f "$HOME/xtool/$file/setup.sh" ]; then
 	    		echo $file | cut -d "/" -f2
 	    		sh "./shell/echoColor.sh" "-yellow" "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
 				setupTool $file
