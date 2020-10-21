@@ -1,15 +1,15 @@
 
 function podinstall(){
-	sh $HOME/xtool/pods/ppi.sh
+	sh $HOME/xtool/ios/pods/ppi.sh
 }
 
 function podupdate(){
-	sh $HOME/xtool/pods/ppu.sh $*
+	sh $HOME/xtool/ios/pods/ppu.sh $*
 }
 
 function poddelete(){
 	echo "ppd command has been deleted"
-	#sh $HOME/xtool/pods/ppd.sh
+	#sh $HOME/xtool/ios/pods/ppd.sh
 }
 
 function podcheckout(){
@@ -17,19 +17,19 @@ function podcheckout(){
 }
 
 function podcache(){
-  sh $HOME/xtool/pods/podcache.sh $1
+  sh $HOME/xtool/ios/pods/podcache.sh $1
 }
 
 function podpush(){
-	sh $HOME/xtool/pods/podpush.sh $1
+	sh $HOME/xtool/ios/pods/podpush.sh $1
 }
 
 function podsync(){
-     sh $HOME/xtool/pods/podsync.sh
+     sh $HOME/xtool/ios/pods/podsync.sh
 }
 
 function podcreate(){
-	sh $HOME/xtool/pods/podcreate.sh $1 $2
+	sh $HOME/xtool/ios/pods/podcreate.sh $1 $2
 }
 
 function podpush2lib(){
