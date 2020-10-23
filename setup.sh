@@ -1,7 +1,8 @@
 #!/bin/bash
+#安装命令补全
+source $HOME/xtool/completion/profile
 
 ROOT_PROFILE="$HOME/.profile"
-X_PROFILE="$HOME/xtool/profile"
 
 
 function includeString(){
@@ -17,6 +18,7 @@ elif includeString "$SHELL" "/bin/bash"; then
 	sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
+#安装必装插件
 #安装 zsh-autosuggestions 插件
 FOLDER="$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions/"
 if [ ! -d "$FOLDER" ]; then
@@ -32,21 +34,6 @@ if [ ! -d "$FOLDER" ]; then
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 fi
 
-function addStringToFile(){
-	ret=$(cat $2 | grep "$1")
-	if [ "$ret" = "" ] ;then
-		echo "$1">>$X_PROFILE
-
-		echo "[source] \"$1\" ---> \"$2\"."
-	fi
-}
-
-function setupTool(){
-	addStringToFile 'source $HOME/xtool/'$1"/profile" $X_PROFILE
-	sh "$HOME/xtool/$1/setup.sh"
-	successString="$1 setup success !"
-	sh "./shell/echoColor.sh" "-green" "$successString"
-}
 
 #在.profile里面添加source代码
 addStringToFile "source $X_PROFILE" $ROOT_PROFILE
@@ -89,6 +76,7 @@ if [ -d "$FOLDER" ]; then
 	HAS_VSCODE='vscode'
 fi
 sed -i "" "s/plugins=.*$/plugins=( git z sublime zsh-autosuggestions $HAS_VSCODE zsh_reload colored-man-pages zsh-syntax-highlighting sudo )/" $HOME/.zshrc
+
 
 sh "./shell/echoColor.sh" "-red" "安装完毕，请重启终端。否则命令不会立即生效!"
 

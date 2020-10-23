@@ -12,12 +12,12 @@ if [ -n `which xtool_update` ]; then
     sh "./shell/echoColor.sh" "-yellow" '已配置过IDE'
 else
 
-    files=("Visual Studio Code" "IntelliJ IDEA" "eclipse" "IntelliJ IDEA CE" "Xcode" "Android Studio")
+    ides=("Visual Studio Code" "IntelliJ IDEA" "eclipse" "IntelliJ IDEA CE" "Xcode" "Android Studio")
 
     menuitems() {
         echo "请选择需要创建别名的IDE："
-        for i in ${!files[@]}; do
-            printf "%3d%s) %s\n" $((i+1)) "${choices[i]:- }" "${files[i]}"
+        for i in ${!ides[@]}; do
+            printf "%3d%s) %s\n" $((i+1)) "${choices[i]:- }" "${ides[i]}"
         done
         [[ "$msg" ]] && echo "$msg"; :
     }
@@ -28,9 +28,9 @@ else
         array=(${num// / })  
         color="-yellow"
         msg=""
-        for var in ${array[@]}
+        for index in ${array[@]}
         do
-            case $var in
+            case $index in
                 1)  
                     #安装 zsh-autosuggestions 插件
                     FOLDER="$HOME/.oh-my-zsh/custom/plugins/vscode"
@@ -63,7 +63,7 @@ else
                 *)  echo '请选择1-6直接的序号'
                 ;;
             esac
-            addStringToFile $alias_cmd
+            addStringToFile $alias_cmd 
             sh "./shell/echoColor.sh" $color $msg
 
         done 

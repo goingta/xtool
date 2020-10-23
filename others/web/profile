@@ -1,0 +1,4 @@
+alias xt_create_project='fl create'
+alias xt_preview_weapp='fl weapp preview'
+alias xt_lint='fl lint'
+alias xt_tool='fl tool'
