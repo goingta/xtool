@@ -15,7 +15,6 @@ function _xpmr(){
     current_head=`echo $head | cut -b 17-`
     app_id=`git config --get xpportal.appid`
 
-    echo "app_id: $app_id"
     if [ -z "$app_id" ];then
         echo "you are not config xp-portal appid"
         return
