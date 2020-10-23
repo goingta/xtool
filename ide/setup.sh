@@ -1,7 +1,7 @@
 #!/bin/bash
-if [ -n `which xtool_update` ]; then
-    sh "./shell/echoColor.sh" "-yellow" '已配置过IDE'
-else
+# if [ -n `which xtool_update` ]; then
+#     sh "./shell/echoColor.sh" "-yellow" '已配置过IDE'
+# else
     source $HOME/xtool/ide/profile
 
     files=("Visual Studio Code" "IntelliJ IDEA" "eclipse" "IntelliJ IDEA CE" "Xcode" "Android Studio")
@@ -56,4 +56,4 @@ else
         done 
         exit
     done
-fi
+# fi
