@@ -35,11 +35,9 @@ fi
 function addStringToFile(){
 	ret=$(cat $2 | grep "$1")
 	if [ "$ret" = "" ] ;then
-		echo "
-$1
-	">>$
+		echo "$1">>$X_PROFILE
 
-	echo "[source] \"$1\" ---> \"$2\"."
+		echo "[source] \"$1\" ---> \"$2\"."
 	fi
 }
 
@@ -69,14 +67,14 @@ if [[ "$1" != "" ]]; then
 		sh "./shell/echoColor.sh" "-red" "$failedString"
 	fi
 else
-	for file in ./*
+	for folder in ./*
 	do
-	    if test -d $file
+	    if test -d $folder
 	    then
-		    if [ "$file" != "./shell" ] && [ "$file" != "./git" ] && [ -f "$HOME/xtool/$file/setup.sh" ]; then
-	    		echo $file | cut -d "/" -f2
+		    if [ "$folder" != "./shell" ] && [ "$folder" != "./git" ] && [ -f "$HOME/xtool/$folder/setup.sh" ]; then
+	    		echo $folder | cut -d "/" -f2
 	    		sh "./shell/echoColor.sh" "-yellow" "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
-				setupTool $file
+				setupTool $folder
 				sh "./shell/echoColor.sh" "-yellow" ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
 				echo 
 			fi

@@ -1,0 +1,34 @@
+#添加xp-portal的appid
+alias xpid='_xpid'
+function _xpid(){
+    git config xpportal.appid $1
+}
+
+#打开xp-portal的merge request
+alias xpmr='_xpmr'
+function _xpmr(){
+    #http://xpportal.xrxr.xyz/?_hash_=/app/preview/{appId}&mr=true&target={targetBranch}&source={sourceBranch}
+    src_branch=""
+    dst_branch=""
+    app_id=""
+    head=`cat .git/HEAD`
+    current_head=`echo $head | cut -b 17-`
+    app_id=`git config --get xpportal.appid`
+
+    echo "app_id: $app_id"
+    if [ -z "$app_id" ];then
+        echo "you are not config xp-portal appid"
+        return
+    fi
+
+    if [[ $current_head = *_* ]]
+    then
+        src_branch="${branch}_${user}"
+        dst_branch=${current_head%_*}
+    else
+        echo "you are not in your own branch"
+        return
+    fi
+    url='http://xpportal.xrxr.xyz/?_hash_=/app/preview/'$app_id'&mr=true&target='$dst_branch'&source='$src_branch
+    open $url
+}
