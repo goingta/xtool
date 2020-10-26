@@ -11,9 +11,11 @@ function includeString(){
 
 #判断shell环境
 if includeString "$SHELL" "/bin/zsh"; then
+    echo "zsh环境."
 	RC_FILE="$HOME/.zshrc"
 elif includeString "$SHELL" "/bin/bash"; then
 	RC_FILE="$HOME/.bashrc"
+	echo "bash环境，开始安装oh-my-zsh"
 	#安装oh-my-zsh
 	sh -c "$(curl -fsSL https://gitee.com/goingta/xtool/raw/master/oh_my_zsh_install.sh)"
 fi
