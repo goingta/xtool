@@ -1,3 +1,9 @@
+# 安装
+|Method|Command|
+|curl|sh -c "$(curl -fsSL https://raw.githubusercontent.com/goingta/xtool/master/install.sh)"|
+|wget|sh -c "$(wget -O- https://raw.githubusercontent.com/goingta/xtool/master/install.sh)"|
+|fetch|sh -c "$(fetch -o - https://raw.githubusercontent.com/goingta/xtool/master/install.sh)"|
+
 # 通用
 ## oh my zsh
 如果是bash环境会安装oh my zsh，oh my zsh自带了很多插件，然后会额外安装zsh-autosuggestions和zsh-syntax-highlighting两个插件。并且配置打开所有安装过的以及自带的部分好用的插件，查看插件配置步骤：打开`~/.zshrc`文件找到`plugins=( git )`
