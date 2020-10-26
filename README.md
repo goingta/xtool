@@ -1,8 +1,9 @@
 # 安装
-|Method|Command|
-|curl|sh -c "$(curl -fsSL https://raw.githubusercontent.com/goingta/xtool/master/install.sh)"|
-|wget|sh -c "$(wget -O- https://raw.githubusercontent.com/goingta/xtool/master/install.sh)"|
-|fetch|sh -c "$(fetch -o - https://raw.githubusercontent.com/goingta/xtool/master/install.sh)"|
+| Method|Command |
+| ----| ---- |
+| curl|sh -c "$(curl -fsSL https://raw.githubusercontent.com/goingta/xtool/master/install.sh)" |
+| wget|sh -c "$(wget -O- https://raw.githubusercontent.com/goingta/xtool/master/install.sh)" |
+|fetch|sh -c "$(fetch -o - https://raw.githubusercontent.com/goingta/xtool/master/install.sh)" |
 
 # 通用
 ## oh my zsh
