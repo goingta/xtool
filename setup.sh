@@ -44,6 +44,8 @@ addStringToFile "source $ROOT_PROFILE" $RC_FILE
 #addStringToFile "env ZSH=$ZSH "'PGTOOLS_AUTO_CHECK=$PGTOOLS_AUTO_CHECK PGTOOLS_AUTO_DAYS=$PGTOOLS_AUTO_DAYS'" zsh -f $HOME/xtool/check_update.sh" 
 #$RC_FILE
 
+folders=($(getFolder "$HOME/xtool"))
+
 if [[ "$1" != "" ]]; then
 	if [[ -d "$1" ]]; then
 		sh "./shell/echoColor.sh" "-yellow" "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
@@ -54,11 +56,11 @@ if [[ "$1" != "" ]]; then
 		sh "./shell/echoColor.sh" "-red" "$failedString"
 	fi
 else
-	for folder in ./*
+	for folder in ${folders[*]}
 	do
 	    if test -d $folder
 	    then
-		    if [ "$folder" != "./shell" ] && [ "$folder" != "./git" ] && [ -f "$HOME/xtool/$folder/setup.sh" ]; then
+		    if [ -f "$HOME/xtool/$folder/setup.sh" ]; then
 	    		echo $folder | cut -d "/" -f2
 	    		sh "./shell/echoColor.sh" "-yellow" "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
 				setupTool $folder

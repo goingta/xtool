@@ -1,7 +1,7 @@
 #!/bin/bash
 RET="failed"
 
-source $HOME/xtool/dependency/profile
+source $HOME/xtool/others/ios/dependency/profile
 
 #是否安装了atlassian-stash
 dependency_gem atlassian-stash

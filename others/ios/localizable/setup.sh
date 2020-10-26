@@ -1,7 +1,7 @@
 #!/bin/bash
 RET="failed"
 
-source $HOME/xtool/dependency/profile
+source $HOME/xtool/others/ios/dependency/profile
 
 function _FixBuilderFile(){
 	if [[ -d "$1" ]]; then

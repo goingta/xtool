@@ -11,7 +11,7 @@
         done
         [[ "$msg" ]] && echo "$msg"; :
     }
-
+    
     prompt="请输入序号，多选请以空格隔开："
 
     while menuitems && read -rp "$prompt" num && [[ "$num" ]]; do
