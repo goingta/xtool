@@ -1,9 +1,9 @@
 # 安装
 | Method|Command |
 | ----| ---- |
-| curl|sh -c "$(curl -fsSL https://raw.githubusercontent.com/goingta/xtool/master/install.sh)" |
-| wget|sh -c "$(wget -O- https://raw.githubusercontent.com/goingta/xtool/master/install.sh)" |
-|fetch|sh -c "$(fetch -o - https://raw.githubusercontent.com/goingta/xtool/master/install.sh)" |
+| curl|sh -c "$(curl -fsSL https://gitlab.aihaisi.com/qiexr/devops/xtool/-/raw/master/install.sh)" |
+| wget|sh -c "$(wget -O- https://gitlab.aihaisi.com/qiexr/devops/xtool/-/raw/master/install.sh)" |
+|fetch|sh -c "$(fetch -o - https://gitlab.aihaisi.com/qiexr/devops/xtool/-/raw/master/install.sh)" |
 
 # 通用
 ## oh my zsh
