@@ -1,6 +1,12 @@
 # 安装
 emmm，由于github会遇到 `failed to connect to raw.githubusercontent.com port 443 connection refused`，gitlab会先去鉴权。目前暂时把安装文件放到gitee上
 
+## 1.安装Oh my zsh
+
+> sh -c "$(curl -fsSL https://gitee.com/goingta/xtool/raw/master/oh_my_zsh_install.sh)"
+
+## 2.安装xtool
+
 |  Method   | Command  |
 |  ----  | ----  |
 | curl  | sh -c "$(curl -fsSL https://gitee.com/goingta/xtool/raw/master/install.sh)" |
