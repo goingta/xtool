@@ -11,7 +11,7 @@ function includeString(){
 
 #判断shell环境
 if includeString "$SHELL" "/bin/zsh"; then
-    echo "zsh环境."
+    echo "zsh环境，开始配置插件。"
 	RC_FILE="$HOME/.zshrc"
 elif includeString "$SHELL" "/bin/bash"; then
 	RC_FILE="$HOME/.bashrc"
