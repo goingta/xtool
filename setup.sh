@@ -11,13 +11,9 @@ function includeString(){
 
 #判断shell环境
 if includeString "$SHELL" "/bin/zsh"; then
-    echo "zsh环境，开始配置插件。"
 	RC_FILE="$HOME/.zshrc"
 elif includeString "$SHELL" "/bin/bash"; then
 	RC_FILE="$HOME/.bashrc"
-	echo "bash环境，开始安装oh-my-zsh"
-	#安装oh-my-zsh
-	sh -c "$(curl -fsSL https://gitee.com/goingta/xtool/raw/master/oh_my_zsh_install.sh)"
 fi
 
 #安装必装插件
@@ -84,8 +80,6 @@ sed -i "" "s/plugins=.*$/plugins=( git z sublime zsh-autosuggestions $HAS_VSCODE
 
 sh "./shell/echoColor.sh" "-red" "安装完毕，请重启终端。否则命令不会立即生效!"
 
-echo "运行zsh环境"
-exec zsh -l
 
 
 
