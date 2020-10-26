@@ -2,9 +2,9 @@
 emmm，由于github会遇到 `failed to connect to raw.githubusercontent.com port 443 connection refused`，gitlab会先去鉴权。目前暂时把安装文件放到gitee上
 | Method|Command |
 | ----| ---- |
-| curl|sh -c "$(curl -fsSL https://gitee.com/goingta/xtool/raw/master/install.sh)" |
-| wget|sh -c "$(wget -O- https://gitee.com/goingta/xtool/raw/master/install.sh)" |
-|fetch|sh -c "$(fetch -o - https://gitee.com/goingta/xtool/raw/master/install.sh)" |
+| curl | sh -c "$(curl -fsSL https://gitee.com/goingta/xtool/raw/master/install.sh)" |
+| wget | sh -c "$(wget -O- https://gitee.com/goingta/xtool/raw/master/install.sh)" |
+| fetch | sh -c "$(fetch -o - https://gitee.com/goingta/xtool/raw/master/install.sh)" |
 
 # 通用
 ## oh my zsh
