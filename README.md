@@ -1,200 +1,232 @@
+# 通用
+## oh my zsh
+如果是bash环境会安装oh my zsh，oh my zsh自带了很多插件，然后会额外安装zsh-autosuggestions和zsh-syntax-highlighting两个插件。并且配置打开所有安装过的以及自带的部分好用的插件，查看插件配置步骤：打开`~/.zshrc`文件找到`plugins=( git )`
+具体配置如下：
+> plugins=( git z sublime zsh-autosuggestions zsh_reload colored-man-pages zsh-syntax-highlighting sudo )
 
-<font color="#450cc4" size = "3px">	
+注，如果是前端的话会多一个vscode：
+> plugins=( git z sublime zsh-autosuggestions vscode zsh_reload colored-man-pages zsh-syntax-highlighting sudo )
 
-##How to install
+### zsh-autosuggestions
+非常好用的一个插件，会记录你之前输入过的所有命令，并且自动匹配你可能想要输入命令，然后按→补全
 
-use the follow command to install all the tools.
+### zsh-syntax-highlighting
+命令太多，有时候记不住，等输入完了才知道命令输错了，这个插件直接在输入过程中就会提示你，当前命令是否正确，错误红色，正确绿色
 
-	sh setup.sh
+### z
+这个是oh-my-zsh默认就装好的，需要自己开启。还有一个autojump的插件和z功能差不多，autojump需要单独装，如果z插件历史记录太多，并且有一些不是自己想要的，可以删除
 
-use the foloow command to install a special tool.
+> z -x 不要的路径
 
-	sh setup.sh mptools
-	
-##How to use tools
+## git
+这个是装好oh-my-zsh就默认已经开启的，然后也根据团队需要扩充了一些命令，方便做版本，分支管理查看所有oh my zsh自带的git命令alias。
+> ~/.oh-my-zsh/plugins/git/git.plugin.zsh
 
-#git
-Introduction
+这里把大部分贴出来，随着版本更新可能会有变化：
 
-Use gcd to switch branch to your branch[xx_dev]
+```
+#扩充的命令
 
-	gcd
+gam (git add -a && git commit -m "xxx")
 
-Use gl to pull update from remote dev to your local branch[xx_branch]
-	
-	gl
+glm (等同于从"主"分支git pull & merge到当前分支)
 
-Use gh to push update to your remote branch[xx_dev]
-	
-	gh
+gmr (往gitlab上发pull request)
 
-Use gr to create a request of merge from your branch[xx_dev] to dev branch
-	
-	gr
+#以下是oh my zsh自带的
+g - git
 
-Use glf to pull update from remote branch you given to your remote branch[xx_dev]
-	
-	gfl
+gl - git pull
 
-Use generate_default_branch to create everyone's branch[xx_dev]
-	
-	generate_default_branch
+gst - git status
 
-#localizable
+gp - git push
 
-Use locinit to init configrure in  localizable folder
-	
-	locinit
+gd - git diff
 
-Use loc2s to convert xls to strings file
-	
-	loc2s
+gdc - git diff --cached
 
-Use loc2x to convert strings file to xls
-	
-	loc2x
-	
-Use lochelp to show help info
-	
-	lochelp
-	
-#package
+gdv - git diff -w "$@" | view
 
-Write the example configuration
+gc - git commit -v
 
-	pkg -write
+gc! - git commit -v --amend
 
-Read the configuration from local config file
+gca - git commit -v -a
 
-	pkg -read
-	
-Change xcode project configuration by gien config file
+gca! - git commit -v -a --amend
 
-	pkg -env dev.cfg
-	
-Build xcode project
+gcmsg - git commit -m
 
-	pkg -build
+gco - git checkout
 
-Build xcode project by Debug or Release
+gcm - git checkout master
 
-	pkg -build Debug
-	
-Clean xcode project
+gr - git remote
 
-	pkg -clean
-	
-Make ipa file
+grv - git remote -v
 
-	pkg -make
+grmv - git remote rename
 
-Batch make ipa file
+grrm - git remote remove
 
-	pkg -bat
+gsetr - git remote set-url
 
-Env configuration
-	
-	[Use ':' to define Action && Object]
-	|							Action							|		Object			  |
-	|			Key 		  |flag|			Value 			|subObj|		Obj 	  |
-	GCC_PREPROCESSOR_DEFINITIONS++DEBUG=1 INHOUCE_LOC=0 OTHER=1:Widget<-Camera360.xcodeproj
+grup - git remote update
 
-	Action flag:
-	[>>]
-	Use 'key>>value' Set key-value in Action: 
-	CFBundleIdentifier>>com.pinguo.camera360
+grbi - git rebase -i
 
-	[++]
-	Use 'key++value' add key-value in Action:
-	GCC_PREPROCESSOR_DEFINITIONS++A=1 B=3 C=3
+grbc - git rebase --continue
 
-	[Object]
-	Use 'subObj<-Obj' define target of project:
-	Widget<-Camera360.xcodeproj
+grba - git rebase --abort
 
-	[Object Support Type]
-	.plist
-	.entitlements
-	.xcodeproj
-	.file(only format)
+gb - git branch
 
-Make configuration
+gba - git branch -a
 
-1、Defined by action
-	
-filed|description|remark
-:---------------|:---------------	|:---------------
-Build Mode| argument used in 'pkg -b [debug/release]'
-Build Time| the time when build/make | %Y%m%d%H%M%S
+gcount - git shortlog -sn
 
-2、Defined in Info.plist
+gcl - git config --list
 
-filed|description|remark
-:---------------|:---------------	|:---------------
-Product Name|Bundle name|String type, etc. "Camera360"
-Product Version|Bundle versions string, short|String type, etc. "6.2.0"
-Build Version|Bundle version | Interger type, etc. 620
+gcp - git cherry-pick
 
-3、Custom filed defined in Info.plist
-	
-filed|description|remark
-:---------------|:---------------	|:---------------
-Product Stage|APP_STAGE|String type, etc. "stage 1"
-Git Version|APP_GIT_REVISION
-Channel|APP_CHANNEL|String type, etc. "91"
-Environment|APP_ENV|Interger type,0-DevEnv 1-TestEnv 2-GreyEnv 3-ReleaseEnv
-Custom|APP_CUSTOM|String type, etc. "custom filed"
+glg - git log --stat --max-count=10
 
-4、Fields prioprity in ipa name:
-	
-	{Product Name}\_{Product Version}\_{Build Mode}\_{Product Stage}\_{Build Time}\_{Channel}\_{Environment}\_{Custom}\_{Build Version}\_{Git Version}
+glgg - git log --graph --max-count=10
 
-5、Enable build version auto increase 
+glgga - git log --graph --decorate --all
 
-	set CFBundleVersionAutoIncrease=1 in Info.plist
+glo - git log --oneline --decorate --color
 
-	
-#mptools
+glog - git log --oneline --decorate --color --graph
 
-List all the provisionprofile file
+gss - git status -s
 
-	mplist
-	
-Remove all the provisionprofile file
+ga - git add
 
-	mpclean
-	
-Install provisionprofile file
+gm - git merge
 
-	mpinstall test.provisionprofile
-	
-Install provisionprofile folder
+grh - git reset HEAD
 
-	mpinstall ./provisionprofileFolder
+grhh - git reset HEAD --hard
 
-#pods
+gclean - git reset --hard && git clean -dfx
 
-Pod install
+gwc - git whatchanged -p --abbrev-commit --pretty=medium
 
-	ppi
-	
-Pod update
+gsts - git stash show --text
 
-	ppu
-	
-#utility
+gsta - git stash
 
-Quik start project by xcode
+gstp - git stash pop
 
-	xx
-	
-Quik start project by appcode
+gstd - git stash drop
 
-	aa
-	
-#shell
+ggpull - git pull origin $(current_branch)
+
+ggpur - git pull --rebase origin $(current_branch)
+
+ggpush - git push origin $(current_branch)
+
+ggpnp - git pull origin $(current_branch) && git push origin $(current_branch)
+
+glp - _git_log_prettily
+
+```
+
+## XP-Portal
+根据xp-portal的目前分支版本流程扩充的命令
+```
+1. xpid xxx //添加xp-portal的应用id
+2. xpmr //提交代码后，打开浏览器进入xp-portal提交merge request流程
+```
+
+## IDE
+安装的时候会提示，需要安装那些快捷键。根据自己的需要安装就可以了。
+
+### IntelliJ IDEA
+封装过的命令，需要打开工程文件的话，只需要在工程目录下面输入：
+> ida
+
+### IntelliJ IDEA CE
+也是封装过的命令，需要打开工程文件的话，只需要在工程目录下面输入：
+> idace
+
+### eclipse
+需要打开工程文件的话，只需要在工程目录下面输入：
+> ec
+
+### Android Studio
+需要打开工程文件的话，只需要在工程目录下面输入：
+> as
+
+### sublime
+又是一个自带的插件，同样需要自己开启，针对喜欢用sublime的小伙伴，如果想要用sublime打开一个文件。
+> st 文件路径
+
+### vscode
+随着Visual Studio Code越来越火，用的人也越来越多，可以装一下这个插件,打开一个文件。
+> vs 文件路径
+
+### xcode
+快速打开当前目录下的iOS工程（打开*.xcworkspace或*.xcodeproj）
+> x
+
+## shell
 
 change shell to zsh
 
 	sh setup.sh
+
+# 根据职能可选模块
+## iOS
+
+### localizable
+封装国际化快速转义的命令，将excel文件快速转成对应国家的string file
+```
+locinit //init configrure in  localizable folder
+loc2s //把xls文件转换成strings file
+loc2x //把strings file 转换成xls文件
+lochelp //show help info
+```
+	
+### package
+修改iOS工程配置的快捷命令
+```
+pkg -write //配置example configuration
+pkg -read //查看本地某一个configuration的config file
+pkg -env dev.cfg //根据config file修改xcode project configuration
+pkg -build //Build xcode project
+
+pkg -build Debug //根据debug 或 Release， Build xcode project
+pkg -clean // Clean xcode project
+pkg -make //Make ipa file
+pkg -bat //Batch make ipa file
+```
+
+### mptools
+管理和查看iOS工程需安装的provisionprofile file文件
+```
+mplist //查看所有provisionprofile file
+mpclean //清除所有provisionprofile file
+mpinstall xxxx.provisionprofile //安装某一个provisionprofile file
+mpinstall ./provisionprofileFolder //安装文件夹下所有的安装某一个provisionprofile file
+```
+
+### pods
+为Cocoapods扩充的快捷命令
+```
+ppi - pod install
+ppu - pod update
+```
+## Web
+配置前端的fastlane-cli命令
+```
+xt_create_project='fl create'
+xt_preview_weapp='fl weapp preview'
+xt_lint='fl lint'
+xt_tool='fl tool'
+```
+	
+
    
