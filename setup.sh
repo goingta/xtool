@@ -18,6 +18,7 @@ elif includeString "$SHELL" "/bin/bash"; then
 	echo "bash环境，开始安装oh-my-zsh"
 	#安装oh-my-zsh
 	sh -c "$(curl -fsSL https://gitee.com/goingta/xtool/raw/master/oh_my_zsh_install.sh)"
+	echo "运行zsh环境"
 	exec zsh -l
 fi
 
