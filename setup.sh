@@ -15,7 +15,7 @@ if includeString "$SHELL" "/bin/zsh"; then
 elif includeString "$SHELL" "/bin/bash"; then
 	RC_FILE="$HOME/.bashrc"
 	#安装oh-my-zsh
-	sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+	sh -c "$(curl -fsSL https://gitee.com/goingta/xtool/raw/master/oh_my_zsh_install.sh)"
 fi
 
 #安装必装插件
