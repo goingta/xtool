@@ -14,3 +14,4 @@ source $HOME/xtool/shell/profile
 source $HOME/xtool/update/profile
 source $HOME/xtool/xpportal/profile
 source /Users/goingta/.profile
+source /Users/goingta/.profile
