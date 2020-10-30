@@ -14,7 +14,6 @@
 # echo  "\033[36m天蓝字\033[0m"   -skyblue  暂时不用
 # echo  "\033[37m白色字\033[0m"   -white
 
-
 if [[ $# != 2 ]]; then
 	echo "\033[31m Need Two Params: [color] [string] \033[0m"
 	exit 1

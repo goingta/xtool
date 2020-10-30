@@ -2,9 +2,9 @@
 
 function addStringToFile(){
     profile="$HOME/xtool/ide/profile"
-    als="\"${@}\""
+    als=$@
     ret=$(cat $profile | grep "$als")
-    if [ "$ret" = "" ] ;then
+    if [ "$ret" == "" ] ;then
         echo "$@">>$profile
     fi
 }
@@ -67,7 +67,7 @@ else
                 ;;
             esac
             addStringToFile $alias_cmd 
-            sh "./shell/echoColor.sh" $color $msg
+            sh "./shell/echoColor.sh" $color "$msg"
 
         done 
         exit

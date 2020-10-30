@@ -31,5 +31,3 @@ function ec(){
     ruby $HOME/xtool/ide/eclipse
 }
 
-
-
