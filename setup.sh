@@ -32,13 +32,6 @@ if [ ! -d "$FOLDER" ]; then
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 fi
 
-
-#在.profile里面添加source代码
-addStringToFile "source $X_PROFILE" $ROOT_PROFILE
-
-#在.zshrc/.bashrc里面添加source代码
-addStringToFile "source $ROOT_PROFILE" $RC_FILE
-
 #addStringToFile "env ZSH=$ZSH "'PGTOOLS_AUTO_CHECK=$PGTOOLS_AUTO_CHECK PGTOOLS_AUTO_DAYS=$PGTOOLS_AUTO_DAYS'" zsh -f $HOME/xtool/check_update.sh" 
 #$RC_FILE
 
@@ -79,6 +72,15 @@ sed -i "" "s/plugins=.*$/plugins=( git z sublime zsh-autosuggestions $HAS_VSCODE
 
 
 sh "./shell/echoColor.sh" "-red" "安装完毕，请重启终端。否则命令不会立即生效!"
+
+
+#在.profile里面添加source代码
+addStringToFile "source $X_PROFILE" $ROOT_PROFILE
+
+#在.zshrc/.bashrc里面添加source代码
+addStringToFile "source $ROOT_PROFILE" $RC_FILE
+
+source $RC_FILE
 
 
 

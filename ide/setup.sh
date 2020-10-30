@@ -8,11 +8,11 @@ function addStringToFile(){
     fi
 }
 
-if [ -n `which xtool_update` ]; then
+if type xtool_update >/dev/null 2>&1; then
     sh "./shell/echoColor.sh" "-yellow" '已配置过IDE'
 else
 
-    ides=("Visual Studio Code" "IntelliJ IDEA" "eclipse" "IntelliJ IDEA CE" "Xcode" "Android Studio")
+    ides=("Visual Studio Code" "IntelliJ IDEA" "eclipse" "IntelliJ IDEA CE" "Xcode" "Android Studio" "不用了")
 
     menuitems() {
         echo "请选择需要创建别名的IDE："
@@ -60,7 +60,9 @@ else
                     alias_cmd="alias as='as'"
                     msg='Android Studio 别名已生成，请使用 "as" 打开工程'
                 ;;
-                *)  echo '请选择1-6直接的序号'
+                *)  
+                    alias_cmd=""
+                    msg=''
                 ;;
             esac
             addStringToFile $alias_cmd 

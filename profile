@@ -9,9 +9,7 @@ source $HOME/xtool/others/ios/dependency/profile
 source $HOME/xtool/completion/profile
 source $HOME/xtool/git/profile
 source $HOME/xtool/ide/profile
-source $HOME/xtool/others/profile
 source $HOME/xtool/shell/profile
 source $HOME/xtool/update/profile
 source $HOME/xtool/xpportal/profile
-source /Users/goingta/.profile
-source /Users/goingta/.profile
+
