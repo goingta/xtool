@@ -13,7 +13,7 @@ function setupTool(){
 
 function addStringToFile(){
 	ret=$(cat $2 | grep "$1")
-	if [ "$ret" = "" ] && [ -f $1 ];then
+	if [ "$ret" = "" ] && [ -f "$1" ];then
 		echo "$1">>$X_PROFILE
 		echo "[source] \"$1\" ---> \"$2\"."
 	fi
