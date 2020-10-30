@@ -5,7 +5,9 @@ function comp_install(){
 }
 
 function setupTool(){
-	addStringToFile 'source $HOME/xtool/'$1'/profile' $X_PROFILE
+	if [ -f "$1" ];then
+		addStringToFile 'source $HOME/xtool/'$1'/profile' $X_PROFILE
+	fi
 	sh "$HOME/xtool/$1/setup.sh"
 	successString="$1 setup success !"
 	sh "./shell/echoColor.sh" "-green" "$successString"
@@ -13,7 +15,7 @@ function setupTool(){
 
 function addStringToFile(){
 	ret=$(cat $2 | grep "$1")
-	if [ "$ret" = "" ] && [ -f "$1" ];then
+	if [ "$ret" = "" ];then
 		echo "$1">>$X_PROFILE
 		echo "[source] \"$1\" ---> \"$2\"."
 	fi
