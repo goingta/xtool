@@ -4,8 +4,9 @@ source $HOME/xtool/completion/profile
 
 ROOT_PROFILE="$HOME/.profile"
 
-folders=($(getFolder "$HOME/xtool"))
 
+folders=($(getFolder "$HOME/xtool"))
+echo "folders -> ${folders[*]}"
 if [[ "$1" != "" ]]; then
 	if [[ -d "$1" ]]; then
 		sh "./shell/echoColor.sh" "-yellow" "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
@@ -73,14 +74,12 @@ sed -i "" "s/plugins=.*$/plugins=( git z sublime zsh-autosuggestions $HAS_VSCODE
 
 sh "./shell/echoColor.sh" "-red" "安装完毕，请重启终端。否则命令不会立即生效!"
 
-
 #在.profile里面添加source代码
 addStringToFile "source $X_PROFILE" $ROOT_PROFILE
 
 #在.zshrc/.bashrc里面添加source代码
 addStringToFile "source $ROOT_PROFILE" $RC_FILE
 
-echo "配置xtool命令到 $RC_FILE"
 source $RC_FILE
 
 
