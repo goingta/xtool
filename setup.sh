@@ -4,6 +4,32 @@ source $HOME/xtool/completion/profile
 
 ROOT_PROFILE="$HOME/.profile"
 
+folders=($(getFolder "$HOME/xtool"))
+
+if [[ "$1" != "" ]]; then
+	if [[ -d "$1" ]]; then
+		sh "./shell/echoColor.sh" "-yellow" "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
+		setupTool $1
+		sh "./shell/echoColor.sh" "-yellow" ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+	else
+		failedString="$1 not exsit!"
+		sh "./shell/echoColor.sh" "-red" "$failedString"
+	fi
+else
+	for folder in ${folders[*]}
+	do
+	    if test -d $folder
+	    then
+		    if [ -f "$HOME/xtool/$folder/setup.sh" ]; then
+	    		echo $folder | cut -d "/" -f2
+	    		sh "./shell/echoColor.sh" "-yellow" "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
+				setupTool $folder
+				sh "./shell/echoColor.sh" "-yellow" ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+				echo 
+			fi
+	    fi
+	done
+fi
 
 function includeString(){
 	echo "$1" | grep -q "$2" && return 0 || return 1
@@ -35,32 +61,6 @@ fi
 #addStringToFile "env ZSH=$ZSH "'PGTOOLS_AUTO_CHECK=$PGTOOLS_AUTO_CHECK PGTOOLS_AUTO_DAYS=$PGTOOLS_AUTO_DAYS'" zsh -f $HOME/xtool/check_update.sh" 
 #$RC_FILE
 
-folders=($(getFolder "$HOME/xtool"))
-
-if [[ "$1" != "" ]]; then
-	if [[ -d "$1" ]]; then
-		sh "./shell/echoColor.sh" "-yellow" "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
-		setupTool $1
-		sh "./shell/echoColor.sh" "-yellow" ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-	else
-		failedString="$1 not exsit!"
-		sh "./shell/echoColor.sh" "-red" "$failedString"
-	fi
-else
-	for folder in ${folders[*]}
-	do
-	    if test -d $folder
-	    then
-		    if [ -f "$HOME/xtool/$folder/setup.sh" ]; then
-	    		echo $folder | cut -d "/" -f2
-	    		sh "./shell/echoColor.sh" "-yellow" "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
-				setupTool $folder
-				sh "./shell/echoColor.sh" "-yellow" ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-				echo 
-			fi
-	    fi
-	done
-fi
 
 # 开启所有安装的插件
 HAS_VSCODE=''
@@ -80,6 +80,7 @@ addStringToFile "source $X_PROFILE" $ROOT_PROFILE
 #在.zshrc/.bashrc里面添加source代码
 addStringToFile "source $ROOT_PROFILE" $RC_FILE
 
+echo "配置xtool命令到 $RC_FILE"
 source $RC_FILE
 
 
