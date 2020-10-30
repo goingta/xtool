@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function addStringToFile(){
-    profile='$HOME/xtool/ide/profile'
+    profile="$HOME/xtool/ide/profile"
     ret=$(cat $profile | grep "$@")
     if [ "$ret" = "" ] ;then
         echo "$@">>$profile
