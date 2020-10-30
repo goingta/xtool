@@ -42,7 +42,7 @@ emmm，由于github会遇到 `failed to connect to raw.githubusercontent.com por
 ```
 #扩充的命令
 
-gam (git add -a && git commit -m "xxx")
+gam (git add . && git commit -m "xxx")
 
 glm (等同于从"主"分支git pull & merge到当前分支)
 
