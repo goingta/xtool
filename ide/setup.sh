@@ -49,7 +49,7 @@ else
                     alias_cmd="alias ec='ec'"
                     msg='eclipse 别名已生成，请使用 "ec" 打开工程'
                 ;;
-                4)  0
+                4)  
                     alias_cmd="alias idace='idace'"
                     msg='IntelliJ IDEA CE 别名已生成，请使用 "idace" 打开工程'
                 ;;
