@@ -2,7 +2,7 @@
 
 function addStringToFile(){
     profile="$HOME/xtool/ide/profile"
-    ret=$(cat $profile | grep "$@")
+    ret=$(cat $profile | grep ""$@"")
     if [ "$ret" = "" ] ;then
         echo "$@">>$profile
     fi
