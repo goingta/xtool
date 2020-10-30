@@ -23,3 +23,10 @@ function mpcheck(){
 function mpfix(){
 	sh $HOME/xtool/ios/mptools/mpfix.sh
 }
+
+alias mpinstall='mpinstall'
+alias mputil='mputil'
+alias mpclean='mpclean'
+alias mplist='mplist'
+alias mpcheck='mpcheck'
+alias mpfix='mpfix'
