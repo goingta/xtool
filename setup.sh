@@ -71,14 +71,13 @@ if [ -d "$FOLDER" ]; then
 fi
 sed -i "" "s/plugins=.*$/plugins=( git z sublime zsh-autosuggestions $HAS_VSCODE zsh_reload colored-man-pages zsh-syntax-highlighting sudo )/" $HOME/.zshrc
 
-
-sh "./shell/echoColor.sh" "-red" "安装完毕，请重启终端。否则命令不会立即生效!"
-
 #在.profile里面添加source代码
 addStringToFile "source $X_PROFILE" $ROOT_PROFILE
 
 #在.zshrc/.bashrc里面添加source代码
 addStringToFile "source $ROOT_PROFILE" $RC_FILE
+
+sh "./shell/echoColor.sh" "-red" "安装完毕，请重启终端。否则命令不会立即生效!"
 
 
 
