@@ -53,7 +53,7 @@ else
                     msg='IntelliJ IDEA CE 别名已生成，请使用 "idace" 打开工程'
                 ;;
                 5)  
-                    alias_cmd="alias x='x'"
+                    alias_cmd="'alias x='x''"
                     msg='Xcode 别名已生成，请使用 "x" 打开工程'
                 ;;
                 6)  
