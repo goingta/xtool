@@ -2,7 +2,8 @@
 
 function addStringToFile(){
     profile="$HOME/xtool/ide/profile"
-    ret=$(cat $profile | grep ""$@"")
+    als="\"${@}\""
+    ret=$(cat $profile | grep "$als")
     if [ "$ret" = "" ] ;then
         echo "$@">>$profile
     fi
@@ -53,7 +54,7 @@ else
                     msg='IntelliJ IDEA CE 别名已生成，请使用 "idace" 打开工程'
                 ;;
                 5)  
-                    alias_cmd="'alias x='x''"
+                    alias_cmd="alias x='x'"
                     msg='Xcode 别名已生成，请使用 "x" 打开工程'
                 ;;
                 6)  
@@ -62,7 +63,7 @@ else
                 ;;
                 *)  
                     alias_cmd=""
-                    msg=''
+                    msg='不用了'
                 ;;
             esac
             addStringToFile $alias_cmd 
