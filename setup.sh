@@ -80,7 +80,6 @@ addStringToFile "source $X_PROFILE" $ROOT_PROFILE
 #在.zshrc/.bashrc里面添加source代码
 addStringToFile "source $ROOT_PROFILE" $RC_FILE
 
-source $RC_FILE
 
 
 
