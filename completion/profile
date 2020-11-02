@@ -6,9 +6,7 @@ function comp_install(){
 
 function setupTool(){
 	profile=$HOME'/xtool/'$1'/profile'
-	echo "profile -> $profile"
 	if [ -f "$profile" ];then
-		echo "add"
 		addStringToFile 'source $HOME/xtool/'$1'/profile' $X_PROFILE
 	fi
 	sh "$HOME/xtool/$1/setup.sh"
