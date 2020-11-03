@@ -291,3 +291,20 @@ function setup_git_pre_commit_hooks() {
 # 其他自定义扩展
 
 alias gam='git add . && git commit -m '
+
+
+loop_read() {
+  local _result=$1
+  local _prompt=$2
+  read -p "$_prompt" $_result
+  if [[ -z "${!_result}" ]] ; then
+    loop_read "$@"
+  fi
+}
+
+alias gitx='_gitx'
+# 来自emac原来的gitx的扩展
+function _gitx() {
+    sh $HOME/xtool/git/_gitx
+}
+
