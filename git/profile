@@ -302,9 +302,9 @@ loop_read() {
   fi
 }
 
-alias gitx='_gitx'
+alias gamx='_gamx'
 # 来自emac原来的gitx的扩展
-function _gitx() {
+function _gamx() {
     sh $HOME/xtool/git/_gitx
 }
 
