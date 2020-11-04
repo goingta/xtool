@@ -1,27 +1,27 @@
 #mobileprovision tools
 	
 function mpinstall(){
-    sh $HOME/xtool/ios/mptools/mpinstall.sh $1
+    sh $HOME/xtool/others/ios/mptools/mpinstall.sh $1
 }
 
 function mputil(){
-    sh $HOME/xtool/ios/mptools/mputil.sh $1 $2
+    sh $HOME/xtool/others/ios/mptools/mputil.sh $1 $2
 }
 
 function mpclean(){
-    sh $HOME/xtool/ios/mptools/mpclean.sh
+    sh $HOME/xtool/others/ios/mptools/mpclean.sh
 }
 
 function mplist(){
-    sh $HOME/xtool/ios/mptools/mplist.sh
+    sh $HOME/xtool/others/ios/mptools/mplist.sh
 }
 
 function mpcheck(){
-	sh $HOME/xtool/ios/mptools/mpcheck.sh $1
+	sh $HOME/xtool/others/ios/mptools/mpcheck.sh $1
 }
 
 function mpfix(){
-	sh $HOME/xtool/ios/mptools/mpfix.sh
+	sh $HOME/xtool/others/ios/mptools/mpfix.sh
 }
 
 alias mpinstall='mpinstall'
