@@ -1,3 +1,6 @@
+# 视频
+在企微微盘->信息科技中心/新人入职/前端培训/xtool
+
 # 安装
 emmm，由于github会遇到 `failed to connect to raw.githubusercontent.com port 443 connection refused`，gitlab会先去鉴权。目前暂时把安装文件放到gitee上
 
@@ -43,6 +46,8 @@ emmm，由于github会遇到 `failed to connect to raw.githubusercontent.com por
 
 ```
 #扩充的命令
+
+gnb xxx (以自己的名字创建分支如：feature_1.0_tanglei)
 
 gamx (原来emac封装的 gitx commit 命令)
 
