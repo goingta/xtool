@@ -5,6 +5,8 @@ emmm，由于github会遇到 `failed to connect to raw.githubusercontent.com por
 
 > sh -c "$(curl -fsSL https://gitee.com/goingta/xtool/raw/master/oh_my_zsh_install.sh)"
 
+配合 [iTerm2](https://www.iterm2.com/) 食用更佳。
+
 ## 2.安装xtool
 
 |  Method   | Command  |
