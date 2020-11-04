@@ -38,6 +38,38 @@ emmm，由于github会遇到 `failed to connect to raw.githubusercontent.com por
 
 > z -x 不要的路径
 
+## IDE
+安装的时候会提示，需要安装那些快捷键。根据自己的需要安装就可以了。
+
+### IntelliJ IDEA
+封装过的命令，需要打开工程文件的话，只需要在工程目录下面输入：
+> ida
+
+### IntelliJ IDEA CE
+也是封装过的命令，需要打开工程文件的话，只需要在工程目录下面输入：
+> idace
+
+### eclipse
+需要打开工程文件的话，只需要在工程目录下面输入：
+> ec
+
+### Android Studio
+需要打开工程文件的话，只需要在工程目录下面输入：
+> as
+
+### sublime
+又是一个自带的插件，同样需要自己开启，针对喜欢用sublime的小伙伴，如果想要用sublime打开一个文件。
+> st 文件路径
+
+### vscode
+随着Visual Studio Code越来越火，用的人也越来越多，可以装一下这个插件,打开一个文件。
+> vs 文件路径
+
+### xcode
+快速打开当前目录下的iOS工程（打开*.xcworkspace或*.xcodeproj）
+> x
+
+
 ## git
 这个是装好oh-my-zsh就默认已经开启的，然后也根据团队需要扩充了一些命令，方便做版本，分支管理查看所有oh my zsh自带的git命令alias。
 > ~/.oh-my-zsh/plugins/git/git.plugin.zsh
@@ -165,36 +197,6 @@ glp - _git_log_prettily
 2. xpmr //提交代码后，打开浏览器进入xp-portal提交merge request流程
 ```
 
-## IDE
-安装的时候会提示，需要安装那些快捷键。根据自己的需要安装就可以了。
-
-### IntelliJ IDEA
-封装过的命令，需要打开工程文件的话，只需要在工程目录下面输入：
-> ida
-
-### IntelliJ IDEA CE
-也是封装过的命令，需要打开工程文件的话，只需要在工程目录下面输入：
-> idace
-
-### eclipse
-需要打开工程文件的话，只需要在工程目录下面输入：
-> ec
-
-### Android Studio
-需要打开工程文件的话，只需要在工程目录下面输入：
-> as
-
-### sublime
-又是一个自带的插件，同样需要自己开启，针对喜欢用sublime的小伙伴，如果想要用sublime打开一个文件。
-> st 文件路径
-
-### vscode
-随着Visual Studio Code越来越火，用的人也越来越多，可以装一下这个插件,打开一个文件。
-> vs 文件路径
-
-### xcode
-快速打开当前目录下的iOS工程（打开*.xcworkspace或*.xcodeproj）
-> x
 
 ## shell
 
